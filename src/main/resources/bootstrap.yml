@@ -1,0 +1,12 @@
+debug: false
+
+server:
+  port: 9999
+  servlet:
+    context-path: /uaa
+spring:
+  application:
+    name: auth-server
+  cloud:
+    config:
+      fail-fast: true
