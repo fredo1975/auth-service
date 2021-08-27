@@ -36,9 +36,6 @@ pipeline {
 			}
 		}
 		stage('Build for development') {
-			when {
-                branch 'develop'
-            }
 			steps {
 				script {
 					withMaven(mavenSettingsConfig: 'MyMavenSettings') {
@@ -98,8 +95,8 @@ pipeline {
 	   		steps {
 		      	script {
 		      		withMaven(mavenSettingsConfig: 'MyMavenSettings') {
-				        sh "scp discovery-service/target/$ARTIFACT jenkins@$PROD1_SERVER_IP:/opt/dvdtheque_auth_server_service/auth-service.jar"
-				        sh "scp discovery-service/target/$ARTIFACT jenkins@$PROD2_SERVER_IP:/opt/dvdtheque_auth_server_service/auth-service.jar"
+				        sh "scp target/$ARTIFACT jenkins@$PROD1_SERVER_IP:/opt/dvdtheque_auth_server_service/auth-service.jar"
+				        sh "scp target/$ARTIFACT jenkins@$PROD2_SERVER_IP:/opt/dvdtheque_auth_server_service/auth-service.jar"
 		      		}
 		      	}
 		    }
